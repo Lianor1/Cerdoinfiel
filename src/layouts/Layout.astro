@@ -1,0 +1,56 @@
+---
+import '../styles/global.css'
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Cerdo Infiel</title>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="descripcion" content="CERDO INFIEL"/>
+		
+		<meta property="og:url" content="http://www.cerdoinfiel.com"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:title" content="Cerdo Infiel">
+		<meta property="og:description" content="Cerdo Infiel">
+		<meta property="og:image" content="https://www.cerdoinfiel.com/og.png"/>
+		<meta property="og:locale" content="es_ES"/>
+
+		<meta name="Twitter:card" content="sumary_large_image"/>
+		<meta name="Twitter:site" content="@Cerdo Infiel"/>
+		<meta name="Twitter:creator" content="sumary_large_image"/>
+		<meta name="Twitter:title" content="Cerdo Infiel"/>
+		<meta name="Twitter:description" content="Cerdo Infiel"/>
+	
+	</head>
+	<body>
+		<Header/>
+		<main>
+			<slot />
+		</main>
+			
+		<Footer/>
+		
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		background:#f19fca;
+	}
+	main{
+		min-height: 90vh;
+		padding-top: 68px;
+	}
+	
+</style>

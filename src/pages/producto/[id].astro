@@ -1,0 +1,451 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { productos, type Producto, type Stat } from '../../data/productos';
+
+export function getStaticPaths() {
+  return productos.map(p => ({
+    params: { id: p.id },
+    props: { producto: p },
+  }));
+}
+
+interface Props {
+  producto: Producto;
+}
+
+const { producto } = Astro.props;
+---
+
+<Layout title={`Cerdo Infiel | ${producto.nombre.replace('\n', ' ')}`}>
+  <main class="product-detail-page">
+    
+    <!-- Efecto de resplandor de fondo -->
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <div class="detail-container">
+      
+      <!-- ── Lado Izquierdo: Imagen Héroe ── -->
+      <div class="detail-left">
+        <!-- Botón Volver -->
+        <a href="/nuestromenu" class="back-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="back-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          VOLVER A NUESTRO MENÚ
+        </a>
+
+        <div class="image-wrapper">
+          <img 
+            src={producto.img} 
+            alt={producto.nombre.replace('\n', ' ')} 
+            class="hero-image"
+            transition:name={`img-${producto.id}`}
+          />
+        </div>
+      </div>
+
+      <!-- ── Lado Derecho: Detalles y Estadísticas ── -->
+      <div class="detail-right">
+        
+        <h1 class="hero-title" set:html={producto.nombre.replace('\n', '<br/>')}></h1>
+        
+        <!-- Tarjeta de estadísticas (Estilo Viruzz exacta) -->
+        <div class="stats-card">
+          
+          <div class="stats-header">
+            <span class="stats-tag">{producto.tag}</span>
+            <span class="stats-price">{producto.precio}</span>
+          </div>
+
+          <!-- Description inserted like Followers in La Velada -->
+          <div class="stats-desc-wrapper">
+            <span class="stats-desc-label">DESCRIPCIÓN</span>
+            <p class="stats-desc-text">{producto.descripcion}</p>
+          </div>
+          
+          <div class="stat-divider"></div>
+
+          <!-- Stats Grid: 2 columns exact -->
+          <div class="stats-grid">
+            {producto.stats.map((stat: Stat) => (
+              <div class="stat-item">
+                <span class="stat-label">{stat.label}</span>
+                <span class="stat-value">{stat.value}</span>
+              </div>
+            ))}
+          </div>
+          
+        </div>
+
+        <!-- Botones de Acción como Tarjetas Secundarias -->
+        <div class="action-cards">
+          <button class="action-card btn-cart">
+            <div class="ac-left">
+              <span class="ac-title">🛒 &nbsp; AÑADIR</span>
+              <span class="ac-subtitle">AL CARRITO</span>
+            </div>
+            <div class="ac-right">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="ac-arrow">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </div>
+          </button>
+          
+          <button class="action-card btn-wsp">
+            <div class="ac-left">
+              <span class="ac-title">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="w-icon-small">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51h-.57c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg> 
+                &nbsp; WHATSAPP
+              </span>
+              <span class="ac-subtitle">PEDIDO DIRECTO</span>
+            </div>
+            <div class="ac-right">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="ac-arrow">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </div>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* ══════════════════════════════════════
+     VARIABLES Y LAYOUT
+  ══════════════════════════════════════ */
+  .product-detail-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #080404; /* Color midnight */
+    color: #f5efe6;
+    position: relative;
+    overflow-x: hidden;
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,0,111,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grid EXACTO de 2 columnas estilo La Velada */
+  .detail-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    flex-grow: 1;
+    z-index: 1;
+    padding: 0 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .detail-container {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+    }
+  }
+
+  /* ══════════════════════════════════════
+     LADO IZQUIERDO: VOLVER + IMAGEN
+  ══════════════════════════════════════ */
+  .detail-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    position: relative;
+  }
+
+  .back-button {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    z-index: 10;
+    transition: color 0.3s ease;
+    margin-bottom: 2rem;
+  }
+
+  .back-button:hover {
+    color: #e8006f;
+  }
+
+  .back-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .image-wrapper {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    animation: float-hero 6s ease-in-out infinite;
+  }
+
+  @keyframes float-hero {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+
+  @media (min-width: 1024px) {
+    .image-wrapper {
+      justify-content: flex-end; /* Pegado hacia el texto a la derecha */
+      padding-right: 2rem;
+      align-items: flex-start; /* Alinear arriba */
+      margin-top: 8rem; /* Separación del botón volver */
+    }
+    .hero-image {
+      max-width: 650px;
+      margin-bottom: 0; 
+    }
+  }
+
+  /* ══════════════════════════════════════
+     LADO DERECHO: TEXTOS Y TARJETAS
+  ══════════════════════════════════════ */
+  .detail-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2rem 0 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    .detail-right {
+      padding-top: 4rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Título estilo La Velada */
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: #fce8cc; /* Tono crema/dorado muy pálido */
+    margin: 0 0 1.5rem 0;
+    line-height: 1.1;
+    text-shadow: 0 0 40px rgba(232,0,111,0.2);
+  }
+
+  /* ── TARJETA PRINCIPAL DE ESTADÍSTICAS ── */
+  .stats-card {
+    background: rgba(15, 15, 20, 0.6); /* Fondo oscuro con ligera transparencia */
+    border: 1px solid rgba(212, 175, 55, 0.2); /* Borde dorado oscuro */
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1rem; /* Muy cerca a los botones de abajo, igual a La Velada */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.8), transparent);
+  }
+
+  /* Header de la tarjeta (TIPO BOWL - PRECIO) */
+  .stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+  }
+
+  .stats-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .stats-price {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fce8cc;
+    line-height: 1;
+  }
+
+  /* Sección descripción antes del Grid */
+  .stats-desc-wrapper {
+    margin-bottom: 1.5rem;
+  }
+  
+  .stats-desc-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #D4AF37; /* Dorado */
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+
+  .stats-desc-text {
+    font-family: 'Inter', sans-serif; /* Texto legible para descripción */
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .stat-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.05);
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Grid 2x2 para las estadísticas puras */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1.5rem;
+    column-gap: 2rem;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .stat-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #D4AF37; /* Dorado */
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .stat-value {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ── BOTONES DE ACCIÓN (ESTILO TARJETAS SECUNDARIAS) ── */
+  .action-cards {
+    display: flex;
+    flex-direction: row; /* Uno al lado del otro como "VS La Parce" y "Ver Combate" */
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .action-card {
+    flex: 1;
+    background: rgba(15, 15, 20, 0.6);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    backdrop-filter: blur(10px);
+  }
+
+  .action-card:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(232,0,111,0.3);
+  }
+
+  .btn-wsp:hover {
+    border-color: rgba(37,211,102,0.5);
+  }
+
+  .ac-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .ac-title {
+    display: flex;
+    align-items: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+  }
+
+  .ac-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  .ac-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    transition: color 0.3s ease;
+  }
+
+  .action-card:hover .ac-right {
+    color: #fff;
+  }
+
+  .ac-arrow {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .w-icon-small {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+  }
+</style>

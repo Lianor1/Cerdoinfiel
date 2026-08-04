@@ -1,0 +1,441 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { acompanamientos, type Acompanamiento, type Maridaje } from '../../data/salsas';
+
+export function getStaticPaths() {
+  return acompanamientos.map(item => ({
+    params: { id: item.id },
+    props: { item },
+  }));
+}
+
+const item = Astro.props.item as Acompanamiento;
+
+// Determine badge based on level
+let levelBadge = "";
+if (item.nivel >= 90) levelBadge = "EXTREMO";
+else if (item.nivel >= 60) levelBadge = "ALTO";
+else if (item.nivel >= 30) levelBadge = "MEDIO";
+else levelBadge = "SUAVE";
+---
+
+<Layout title={`Cerdo Infiel | ${item.nombre}`}>
+  <main class="artist-detail-page">
+    
+    <div class="detail-container">
+      
+      <!-- ── IZQUIERDA: IMAGEN DEL ACOMPAÑAMIENTO ── -->
+      <div class="detail-left">
+        <a href="/salsas-y-extras" class="back-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="back-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          VOLVER AL CARTEL
+        </a>
+
+        <div class="image-frame">
+          <div class="corner corner-tl"></div>
+          <div class="corner corner-tr"></div>
+          <div class="corner corner-bl"></div>
+          <div class="corner corner-br"></div>
+          
+          <img 
+            src={item.img} 
+            alt={item.nombre} 
+            class="hero-img"
+            transition:name={`salsa-img-${item.id}`}
+          />
+        </div>
+      </div>
+
+      <!-- ── DERECHA: DATOS Y ESTADÍSTICAS ── -->
+      <div class="detail-right">
+        
+        <div class="badge-top">CARTEL CONFIRMADO</div>
+        <h1 class="artist-name">{item.nombre}</h1>
+        
+        <div class="share-buttons">
+          <button class="share-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            COPIAR ENLACE
+          </button>
+          <button class="share-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/></svg>
+            COMPARTIR EN X
+          </button>
+        </div>
+
+        <!-- Tarjeta estilo Spotify -->
+        <div class="stats-card">
+          <div class="card-top">
+            <span class="card-label">{item.labelNivel}</span>
+            <span class="card-number">{item.nivel}%</span>
+          </div>
+
+          <div class="tags-container">
+            <span class="tag">{item.categoria}</span>
+            <span class="tag">{levelBadge}</span>
+            <span class="tag">ARTESANAL</span>
+          </div>
+
+          <div class="description-section">
+            <span class="desc-label">DESCRIPCIÓN</span>
+            <p class="desc-text">{item.descripcion}</p>
+          </div>
+
+          <div class="progress-section">
+            <span class="progress-label">POPULARIDAD</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style={`width: ${item.nivel}%`}></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Setlist / Maridaje -->
+        <div class="setlist-section">
+          <h3 class="setlist-title">COMBINACIONES PERFECTAS</h3>
+          <ul class="setlist">
+            {item.maridaje.map((mar: Maridaje, idx: number) => (
+              <li class="setlist-item">
+                <span class="setlist-number">{idx + 1}</span>
+                <span class="setlist-name">{mar.producto}</span>
+                <div class="setlist-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .artist-detail-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #050508; /* Muy oscuro, casi negro-azul */
+    color: #f5efe6;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+  }
+
+  .detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    .detail-container {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 5rem;
+    }
+  }
+
+  /* ── IZQUIERDA ── */
+  .detail-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: #D4AF37;
+  }
+
+  .back-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Marco estilo carta */
+  .image-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4; /* Proporción de la foto de Juanes */
+    background: radial-gradient(circle at center, #8a1322 0%, #3d050b 100%); /* Fondo rojo oscuro de la foto de Juanes */
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+
+  .hero-img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
+    z-index: 2;
+  }
+
+  /* Esquinas doradas del marco */
+  .corner {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #D4AF37;
+    z-index: 10;
+  }
+  .corner-tl { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+  .corner-tr { top: 15px; right: 15px; border-left: none; border-bottom: none; }
+  .corner-bl { bottom: 15px; left: 15px; border-right: none; border-top: none; }
+  .corner-br { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+
+  /* ── DERECHA ── */
+  .detail-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .badge-top {
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #D4AF37;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .artist-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: #fce8cc;
+    margin: 0 0 1.5rem 0;
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .share-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .share-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .share-btn:hover {
+    border-color: #D4AF37;
+    color: #fff;
+    background: rgba(212, 175, 55, 0.1);
+  }
+
+  /* ── TARJETA SPOTIFY / STATS ── */
+  .stats-card {
+    background: linear-gradient(145deg, rgba(30,30,35,0.8) 0%, rgba(15,15,20,0.9) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 1rem;
+  }
+
+  .card-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .card-number {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fce8cc;
+  }
+
+  .tags-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.8);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .description-section {
+    margin-bottom: 2rem;
+  }
+
+  .desc-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #D4AF37;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+
+  .desc-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .progress-section {
+    width: 100%;
+  }
+
+  .progress-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .progress-bar-bg {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #D4AF37, #fce8cc);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+
+  /* ── SETLIST / MARIDAJE ── */
+  .setlist-section {
+    width: 100%;
+  }
+
+  .setlist-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+
+  .setlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .setlist-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: transparent;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.3s ease;
+  }
+
+  .setlist-item:hover {
+    background: rgba(255,255,255,0.03);
+  }
+
+  .setlist-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    width: 30px;
+  }
+
+  .setlist-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+    flex-grow: 1;
+  }
+
+  .setlist-icon {
+    width: 24px;
+    height: 24px;
+    color: #25D366; /* Verde Spotify/WhatsApp */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .setlist-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+</style>

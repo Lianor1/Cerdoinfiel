@@ -1,0 +1,281 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Cerdo Infiel | Promos">
+  <main class="promos-page">
+    
+    <!-- Capas de Niebla Animadas -->
+    <div class="fog-container">
+      <div class="fog-layer fog-1"></div>
+      <div class="fog-layer fog-2"></div>
+    </div>
+
+    <!-- Contenido Central -->
+    <div class="halloween-content">
+      
+      <!-- Logo del Cerdo con Efecto Glow Resplandeciente -->
+      <div class="demon-pig-wrapper">
+        <img src="/images/og.png" alt="Cerdo Infiel Demon" class="demon-pig" />
+      </div>
+      
+      <!-- Textos de Terror -->
+      <div class="spooky-text">
+        <h1 class="spooky-title" id="animated-title">ESTAMOS COCINANDO PROMOS MONSTRUOSAS...</h1>
+        <p class="spooky-subtitle">PESTAÑA EN DESARROLLO</p>
+      </div>
+
+    </div>
+
+    <!-- Efecto viñeta oscura para bordes -->
+    <div class="vignette"></div>
+
+  </main>
+</Layout>
+
+<style>
+  /* ══════════════════════════════════════
+     VARIABLES Y FONDO
+  ══════════════════════════════════════ */
+  .promos-page {
+    width: 100%;
+    /* Ocupar todo el alto menos el header */
+    height: calc(100vh - 68px); 
+    background: #020101; /* Negro casi puro */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Fondo rojo oscuro pulsante */
+  .promos-page::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    background: radial-gradient(circle, rgba(139, 0, 0, 0.15) 0%, transparent 70%);
+    animation: pulse-bg 6s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  @keyframes pulse-bg {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  }
+
+  /* ══════════════════════════════════════
+     EFECTO DE NIEBLA (FOG)
+  ══════════════════════════════════════ */
+  .fog-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh; /* La niebla cubre la mitad inferior */
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .fog-layer {
+    position: absolute;
+    bottom: -10%;
+    width: 200vw;
+    height: 100%;
+    background: 
+      radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(200, 200, 200, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+    filter: blur(20px);
+    opacity: 0.7;
+    animation: pan-fog linear infinite;
+  }
+
+  .fog-1 {
+    animation-duration: 40s;
+    background-size: 50% 100%;
+  }
+
+  .fog-2 {
+    bottom: -20%;
+    opacity: 0.4;
+    animation-duration: 25s;
+    animation-direction: reverse;
+    transform: scaleY(1.5);
+  }
+
+  @keyframes pan-fog {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50vw); }
+  }
+
+  /* ══════════════════════════════════════
+     CERDO DIABÓLICO
+  ══════════════════════════════════════ */
+  .halloween-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .demon-pig-wrapper {
+    position: relative;
+  }
+
+  .demon-pig {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    
+    filter: 
+      drop-shadow(0 0 40px rgba(232, 0, 111, 0.8))
+      drop-shadow(0 0 100px rgba(255, 0, 0, 0.4))
+      contrast(1.2)
+      brightness(0.9);
+    
+    animation: float-demon 4s ease-in-out infinite, pulse-glow 3s alternate infinite;
+  }
+
+  @keyframes float-demon {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.02); }
+  }
+
+  @keyframes pulse-glow {
+    0% { filter: drop-shadow(0 0 20px rgba(232, 0, 111, 0.5)) contrast(1.1) brightness(0.8); }
+    100% { filter: drop-shadow(0 0 60px rgba(255, 0, 0, 0.9)) contrast(1.3) brightness(1.1); }
+  }
+
+  /* ══════════════════════════════════════
+     TEXTOS DE TERROR
+  ══════════════════════════════════════ */
+  .spooky-text {
+    max-width: 800px;
+    padding: 0 2rem;
+  }
+
+  .spooky-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+    position: relative;
+    z-index: 20;
+    
+    text-shadow: 
+      0 0 10px rgba(255,0,0,0.5), 
+      0 0 30px rgba(232,0,111,0.8),
+      2px 2px 0px #000;
+  }
+
+  /* Clases inyectadas por JS para las letras voladoras */
+  :global(.fly-letter) {
+    display: inline-block;
+    white-space: pre;
+    animation: ghost-swarm 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes ghost-swarm {
+    0%, 15% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+      opacity: 1;
+      filter: blur(0);
+      color: #fff;
+    }
+    35%, 65% {
+      transform: translate(var(--rx), var(--ry)) rotate(var(--rrot)) scale(var(--rscale));
+      opacity: 0.15;
+      filter: blur(5px);
+      color: #e8006f;
+    }
+    85%, 100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+      opacity: 1;
+      filter: blur(0);
+      color: #fff;
+    }
+  }
+
+  .spooky-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    animation: flicker 4s infinite;
+  }
+
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.3; }
+  }
+
+  .vignette {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.9) 100%);
+    pointer-events: none;
+    z-index: 5;
+  }
+</style>
+
+<script>
+  // Lógica para las letras fantasma
+  const title = document.getElementById('animated-title');
+  if (title) {
+    const text = title.textContent || '';
+    title.innerHTML = '';
+    
+    // Separar por palabras para evitar que se rompan a la mitad
+    const words = text.split(' ');
+    
+    words.forEach((word, index) => {
+      const wordSpan = document.createElement('span');
+      // Evitamos que la palabra se rompa en varias líneas
+      wordSpan.style.display = 'inline-block';
+      wordSpan.style.whiteSpace = 'nowrap';
+      
+      [...word].forEach((char) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.className = 'fly-letter';
+        
+        const rx = (Math.random() - 0.5) * 800;
+        const ry = -(Math.random() * 300 + 100); 
+        const rrot = (Math.random() - 0.5) * 720; 
+        const rscale = Math.random() * 1.5 + 0.5;
+        
+        span.style.setProperty('--rx', `${rx}px`);
+        span.style.setProperty('--ry', `${ry}px`);
+        span.style.setProperty('--rrot', `${rrot}deg`);
+        span.style.setProperty('--rscale', `${rscale}`);
+        
+        span.style.animationDelay = `${Math.random() * 1.5}s`;
+        
+        wordSpan.appendChild(span);
+      });
+      
+      title.appendChild(wordSpan);
+      
+      // Agregar el espacio entre palabras si no es la última
+      if (index < words.length - 1) {
+        title.appendChild(document.createTextNode(' '));
+      }
+    });
+  }
+</script>

@@ -1,0 +1,354 @@
+---
+// Header.astro — Cerdo Infiel
+---
+
+<header class="ci-header">
+  <div class="ci-inner">
+  <!-- Logo + Nombre -->
+  <a href="/" class="ci-brand" aria-label="Inicio Cerdo Infiel">
+    <img
+      src="/images/og.png"
+      alt="Logo Cerdo Infiel"
+      class="ci-logo"
+      width="48"
+      height="48"
+    />
+    <span class="ci-brand-name">CERDO INFIEL</span>
+  </a>
+
+  <!-- Menú Desktop -->
+  <nav class="ci-nav" aria-label="Menú principal">
+    <ul class="ci-nav-list">
+      <li><a href="/nuestromenu" class="ci-nav-link">NUESTRO MENÚ</a></li>
+      <li><a href="/promos" class="ci-nav-link">PROMOS</a></li>
+      <li><a href="/salsas-y-extras" class="ci-nav-link">SALSAS Y EXTRAS</a></li>
+      <li><a href="#nosotros" class="ci-nav-link">NOSOTROS</a></li>
+      <li>
+        <a href="#pedir" class="ci-nav-cta" id="btn-pedir-ahora">
+          PEDIR AHORA
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Botón hamburguesa (mobile) -->
+  <button
+    class="ci-hamburger"
+    id="hamburger-btn"
+    aria-label="Abrir menú"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+  >
+    <span class="ci-bar"></span>
+    <span class="ci-bar"></span>
+    <span class="ci-bar"></span>
+  </button>
+
+  </div><!-- /.ci-inner -->
+
+  <!-- Menú Mobile -->
+  <div class="ci-mobile-menu" id="mobile-menu" role="dialog" aria-label="Menú móvil">
+    <ul class="ci-mobile-list">
+      <li><a href="/nuestromenu" class="ci-mobile-link">NUESTRO MENÚ</a></li>
+      <li><a href="/promos" class="ci-mobile-link">PROMOS</a></li>
+      <li><a href="/salsas-y-extras" class="ci-mobile-link">SALSAS Y EXTRAS</a></li>
+      <li><a href="#nosotros" class="ci-mobile-link">NOSOTROS</a></li>
+      <li><a href="#pedir" class="ci-mobile-cta">PEDIR AHORA</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('hamburger-btn') as HTMLButtonElement;
+  const menu = document.getElementById('mobile-menu') as HTMLDivElement;
+
+  btn?.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    btn.classList.toggle('is-open');
+    menu.classList.toggle('is-visible');
+  });
+
+  // Cerrar al hacer click en un link
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      btn.setAttribute('aria-expanded', 'false');
+      btn.classList.remove('is-open');
+      menu.classList.remove('is-visible');
+    });
+  });
+</script>
+
+<style>
+  /* ============================================
+     CERDO INFIEL — HEADER
+     Inspirado en La Velada VI: oscuro, elegante,
+     tipografía premium, borde dorado sutil.
+  ============================================ */
+
+  .ci-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    /* El header ocupa todo el ancho pero NO hace el flex aquí */
+    display: flex;
+    justify-content: center;   /* centra el inner wrapper */
+
+    padding: 0 2rem;
+    height: 68px;
+
+    background: rgba(8, 4, 4, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(255, 180, 200, 0.18);
+    box-shadow:
+      0 1px 0 0 rgba(255, 120, 160, 0.12),
+      0 4px 32px 0 rgba(0, 0, 0, 0.6);
+  }
+
+  /* Contenedor interno centrado — igual que La Velada VI */
+  .ci-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;   /* ← limita el ancho para que no quede extremo a extremo */
+  }
+
+  /* ---------- BRAND ---------- */
+  .ci-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .ci-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+    /* Recortamos el borde blanco haciendo zoom al centro del logo */
+    transform: scale(1.22);
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .ci-brand:hover .ci-logo {
+    transform: scale(1.28);
+  }
+
+  .ci-brand-name {
+    font-family: 'cinzel', 'Trajan Pro', serif;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    color: #fff;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    background: linear-gradient(135deg, #fff 30%, #f9bbd0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ---------- NAV DESKTOP ---------- */
+  .ci-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .ci-nav-list {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ci-nav-link {
+    font-family: 'cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.25s ease;
+  }
+
+  /* Subrayado animado al hover */
+  .ci-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, #f472b6, #fb923c);
+    transition: width 0.3s ease;
+  }
+
+  .ci-nav-link:hover {
+    color: #fff;
+  }
+
+  .ci-nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Botón CTA "PEDIR AHORA" */
+  .ci-nav-cta {
+    font-family: 'cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    color: #1a0a0a;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+
+    background: linear-gradient(135deg, #f9bbd0 0%, #fb923c 100%);
+    box-shadow: 0 0 14px rgba(249, 187, 208, 0.4);
+
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.2s ease,
+      filter 0.3s ease;
+  }
+
+  .ci-nav-cta:hover {
+    box-shadow: 0 0 24px rgba(249, 187, 208, 0.7);
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+  }
+
+  /* ---------- HAMBURGUESA (mobile) ---------- */
+  .ci-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1100;
+  }
+
+  .ci-bar {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition:
+      transform 0.35s ease,
+      opacity 0.25s ease;
+  }
+
+  /* Animación X cuando abre */
+  .ci-hamburger.is-open .ci-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .ci-hamburger.is-open .ci-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .ci-hamburger.is-open .ci-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ---------- MENÚ MOBILE ---------- */
+  .ci-mobile-menu {
+    position: fixed;
+    inset: 0;
+    top: 68px;
+    background: rgba(8, 4, 4, 0.97);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .ci-mobile-menu.is-visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  .ci-mobile-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .ci-mobile-link {
+    font-family: 'cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+  }
+
+  .ci-mobile-link:hover {
+    color: #f9bbd0;
+  }
+
+  .ci-mobile-cta {
+    font-family: 'cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    color: #1a0a0a;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #f9bbd0 0%, #fb923c 100%);
+    box-shadow: 0 0 20px rgba(249, 187, 208, 0.4);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .ci-mobile-cta:hover {
+    box-shadow: 0 0 32px rgba(249, 187, 208, 0.65);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px) {
+    .ci-nav {
+      display: none;
+    }
+    .ci-hamburger {
+      display: flex;
+    }
+    .ci-header {
+      padding: 0 1.25rem;
+    }
+  }
+</style>
