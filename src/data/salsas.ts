@@ -31,7 +31,7 @@ export const acompanamientos: Acompanamiento[] = [
   },
   {
     id: 'sarza-criolla',
-    nombre: 'SARZA CRIOLLA',
+    nombre: 'SAlZA CRIOLLA',
     categoria: 'EXTRA',
     img: '/images/002 producto.png', // Placeholder temporal
     nivel: 85,
@@ -83,3 +83,4 @@ export const acompanamientos: Acompanamiento[] = [
     ]
   }
 ];
+  
