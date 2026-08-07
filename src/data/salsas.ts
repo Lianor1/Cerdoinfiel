@@ -19,7 +19,7 @@ export const acompanamientos: Acompanamiento[] = [
     id: 'rocoto-infiel',
     nombre: 'ROCOTO INFIEL',
     categoria: 'SALSA',
-    img: '/images/001 producto.png', // Usando la misma de productos como placeholder temporal
+    img: '/images/salsa_roja.png', // Rocoto
     nivel: 95,
     labelNivel: 'NIVEL DE PICANTE',
     descripcion: 'Puro fuego. Nuestro rocoto carretillero molido en batán, con un toque secreto de hierbas que te hará sudar y llorar, pero siempre pedir más.',
@@ -47,7 +47,7 @@ export const acompanamientos: Acompanamiento[] = [
     id: 'salsa-bbq-andina',
     nombre: 'BBQ ANDINA',
     categoria: 'SALSA',
-    img: '/images/003 producto.png', // Placeholder temporal
+    img: '/images/salsa_crema.png', // BBQ Andina
     nivel: 60,
     labelNivel: 'NIVEL DE DULZOR',
     descripcion: 'Nuestra versión de la clásica BBQ ahumada, pero con un ligero toque de frutas andinas y miel local que realza cualquier corte de cerdo.',
@@ -73,7 +73,7 @@ export const acompanamientos: Acompanamiento[] = [
     id: 'crema-huancaina',
     nombre: 'CREMA HUANCAÍNA',
     categoria: 'SALSA',
-    img: '/images/002 producto.png', // Placeholder temporal
+    img: '/images/salsa_verde.png', // Crema Huancaina / Verde
     nivel: 40,
     labelNivel: 'NIVEL DE PICANTE',
     descripcion: 'Suave, cremosa y con el equilibrio perfecto de queso fresco, ají amarillo y galleta. Un clásico peruano llevado al siguiente nivel.',

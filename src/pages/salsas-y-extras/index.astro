@@ -168,16 +168,20 @@ import { acompanamientos } from '../../data/salsas';
   }
 
   .card-image {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     object-fit: contain;
+    transform: scale(1.4);
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.8));
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.8)) contrast(1.1);
     z-index: 1;
+    /* Eliminar fondo gris visualmente usando una máscara circular difuminada */
+    -webkit-mask-image: radial-gradient(circle at center, black 45%, rgba(0,0,0,0.8) 55%, transparent 65%);
+    mask-image: radial-gradient(circle at center, black 45%, rgba(0,0,0,0.8) 55%, transparent 65%);
   }
 
   .artist-card:hover .card-image {
-    transform: scale(1.05);
+    transform: scale(1.5);
   }
 
   .card-overlay {
