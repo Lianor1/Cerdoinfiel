@@ -30,20 +30,6 @@ export const acompanamientos: Acompanamiento[] = [
     ]
   },
   {
-    id: 'sarza-criolla',
-    nombre: 'SAlZA CRIOLLA',
-    categoria: 'EXTRA',
-    img: '/images/002 producto.png', // Placeholder temporal
-    nivel: 85,
-    labelNivel: 'POPULARIDAD',
-    descripcion: 'El alma gemela del chicharrón. Cebolla roja en corte pluma, ají limo, jugo de limón recién exprimido y culantro. Frescura garantizada.',
-    maridaje: [
-      { producto: 'FAMILY BOX JUGOSO', id: 'family-box-jugoso' },
-      { producto: 'BOX INFIEL PERSONAL', id: 'box-infiel-personal' },
-      { producto: 'DUELO INFIEL MIX', id: 'duelo-infiel-mix' },
-    ]
-  },
-  {
     id: 'salsa-bbq-andina',
     nombre: 'BBQ ANDINA',
     categoria: 'SALSA',
@@ -54,19 +40,6 @@ export const acompanamientos: Acompanamiento[] = [
     maridaje: [
       { producto: 'DUELO INFIEL MIX', id: 'duelo-infiel-mix' },
       { producto: 'COSTILLAS BBQ', id: 'costillas-bbq' },
-    ]
-  },
-  {
-    id: 'camote-frito',
-    nombre: 'CAMOTE FRITO',
-    categoria: 'EXTRA',
-    img: '/images/001 producto.png', // Placeholder temporal
-    nivel: 100,
-    labelNivel: 'NIVEL CROCANTE',
-    descripcion: 'Rodajas de camote seleccionado, fritas al momento. Dulces por dentro y extremadamente crujientes por fuera. Adictivos.',
-    maridaje: [
-      { producto: 'BOX INFIEL PERSONAL', id: 'box-infiel-personal' },
-      { producto: 'ROCOTO INFIEL', id: 'rocoto-infiel' },
     ]
   },
   {
