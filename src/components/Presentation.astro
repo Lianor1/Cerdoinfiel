@@ -44,24 +44,24 @@ import { productos } from '../data/productos';
     <!-- ── PANEL ACTIVO (producto seleccionado) ── -->
     <div class="product-active-panel" id="active-panel" aria-hidden="true">
 
-      <!-- Marca de agua deslizante (nombre del producto) -->
-      <div class="product-watermark" id="product-watermark" aria-hidden="true">
-        <div class="watermark-track">
-          <div class="watermark-set">
-            <span class="watermark-text" id="wm-1">BOWL CLÁSICO</span>
-            <span class="watermark-text" id="wm-2">BOWL CLÁSICO</span>
-            <span class="watermark-text" id="wm-3">BOWL CLÁSICO</span>
-          </div>
-          <div class="watermark-set">
-            <span class="watermark-text" id="wm-4">BOWL CLÁSICO</span>
-            <span class="watermark-text" id="wm-5">BOWL CLÁSICO</span>
-            <span class="watermark-text" id="wm-6">BOWL CLÁSICO</span>
+      <!-- Imagen héroe y Marca de Agua -->
+      <div class="product-hero-layer">
+        <!-- Marca de agua deslizante (nombre del producto) -->
+        <div class="product-watermark" id="product-watermark" aria-hidden="true">
+          <div class="watermark-track">
+            <div class="watermark-set">
+              <span class="watermark-text" id="wm-1">BOWL CLÁSICO</span>
+              <span class="watermark-text" id="wm-2">BOWL CLÁSICO</span>
+              <span class="watermark-text" id="wm-3">BOWL CLÁSICO</span>
+            </div>
+            <div class="watermark-set">
+              <span class="watermark-text" id="wm-4">BOWL CLÁSICO</span>
+              <span class="watermark-text" id="wm-5">BOWL CLÁSICO</span>
+              <span class="watermark-text" id="wm-6">BOWL CLÁSICO</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Imagen héroe grande -->
-      <div class="product-hero-layer">
         <img
           src={productos[0].img}
           alt={productos[0].nombre}
@@ -375,12 +375,12 @@ import { productos } from '../data/productos';
   ══════════════════════════════════════ */
   .pres-section {
     width: 100%;
-    min-height: 85vh; /* Reduced from 100vh to remove excess vertical space */
+    /* No min-height to allow tight wrapping of content */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
-    gap: 1rem; /* Small gap between stage and grid */
+    justify-content: center;
+    gap: 1rem;
     padding: 2rem 0;
     background: var(--midnight);
     position: relative;
@@ -406,8 +406,7 @@ import { productos } from '../data/productos';
   .product-stage {
     position: relative;
     width: 100%;
-    flex: 1;
-    min-height: 45vh; /* Reduced from 60vh */
+    min-height: 550px; /* Increased from 450px to prevent overlapping with the star below */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -564,12 +563,12 @@ import { productos } from '../data/productos';
     position: relative;
     z-index: 1;
     display: flex;
-    align-items: flex-end;
+    align-items: center; /* Center horizontally and vertically with the watermark */
     justify-content: center;
     width: 100%;
     flex: 1;
-    padding-top: 4rem;
-    padding-bottom: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   .product-hero-img {
@@ -597,9 +596,9 @@ import { productos } from '../data/productos';
     font-weight: 900;
     letter-spacing: 0.08em;
     color: var(--cream);
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.75rem; /* Increased margin to prevent overlap */
     text-shadow: 0 0 30px rgba(232,0,111,0.5);
-    line-height: 1;
+    line-height: 1.2; /* Increased from 1 to accommodate descenders (J, G, etc) */
   }
 
   .product-desc {
