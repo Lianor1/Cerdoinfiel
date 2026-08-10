@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import { productos as bowls } from '../data/productos';
 
 const salsas = [
-  { name: "Suave", desc: "Como una almohada. Un ligero toque de sabor que acaricia tu paladar.", color: "#e8006f" },
-  { name: "Fuerte", desc: "Para desahogar tus penas. El picante que te hace olvidar hasta tu nombre.", color: "#ff4d4d" },
-  { name: "Extra Picante", desc: "Para tomarse un aguardiente. Solo para los más valientes y atrevidos.", color: "#ff0000" }
+  { name: "Suave", desc: "Como una almohada. Un ligero toque de sabor que acaricia tu paladar.", color: "#e8006f", img: "/images/salsa_crema.png" },
+  { name: "Fuerte", desc: "Para desahogar tus penas. El picante que te hace olvidar hasta tu nombre.", color: "#ff4d4d", img: "/images/salsa_verde.png" },
+  { name: "Extra Picante", desc: "Para tomarse un aguardiente. Solo para los más valientes y atrevidos.", color: "#ff0000", img: "/images/salsa_roja.png" }
 ];
 ---
 
@@ -74,11 +74,8 @@ const salsas = [
         <div class="salsas-grid">
           {salsas.map((salsa) => (
             <div class="salsa-card" style={`--salsa-color: ${salsa.color}`}>
-              <div class="salsa-icon-wrap">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="salsa-icon">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.824 14.138A3.002 3.002 0 0113.824 10.5" />
-                </svg>
+              <div class="salsa-img-wrap">
+                <img src={salsa.img} alt={`Salsa ${salsa.name}`} class="salsa-img" loading="lazy" decoding="async" />
               </div>
               <h3 class="salsa-name">{salsa.name}</h3>
               <p class="salsa-desc">{salsa.desc}</p>
@@ -462,27 +459,35 @@ const salsas = [
     box-shadow: 0 0 15px var(--salsa-color);
   }
 
-  .salsa-icon-wrap {
-    width: 60px;
-    height: 60px;
+  .salsa-img-wrap {
+    width: 120px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255,255,255,0.03);
     border-radius: 50%;
     margin-bottom: 1.5rem;
-    color: var(--salsa-color);
+    overflow: hidden;
+    background: rgba(0,0,0,0.5);
+    border: 2px solid var(--salsa-color);
+    transition: all 0.4s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+
+  .salsa-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: transform 0.4s ease;
   }
 
-  .salsa-card:hover .salsa-icon-wrap {
-    transform: scale(1.1) rotate(5deg);
-    background: rgba(255,255,255,0.08);
+  .salsa-card:hover .salsa-img-wrap {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px var(--salsa-color);
   }
-
-  .salsa-icon {
-    width: 32px;
-    height: 32px;
+  
+  .salsa-card:hover .salsa-img {
+    transform: scale(1.1);
   }
 
   .salsa-name {
