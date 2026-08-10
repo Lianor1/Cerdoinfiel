@@ -678,11 +678,12 @@ import { productos } from '../data/productos';
   ══════════════════════════════════════ */
   .product-grid {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0;
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
   }
 
   /* Marco flotante del selector */
@@ -711,6 +712,7 @@ import { productos } from '../data/productos';
   /* Celda de producto */
   .product-cell {
     position: relative;
+    width: 25%;
     aspect-ratio: 1;
     cursor: pointer;
     overflow: hidden;
@@ -719,6 +721,13 @@ import { productos } from '../data/productos';
     outline: none;
     transition: background 0.25s ease;
     padding: 0;
+  }
+
+  /* Adjust width on mobile */
+  @media (max-width: 600px) {
+    .product-cell {
+      width: 50%;
+    }
   }
 
   .product-cell:hover,
@@ -752,15 +761,21 @@ import { productos } from '../data/productos';
   }
 
   /* ── Ajustes individuales por producto para igualar tamaños y posiciones ── */
-  #cell-box-infiel-personal .cell-img { transform: scale(1.2); object-position: center 65%; }
-  #cell-pack-pareja-crocante .cell-img { transform: scale(1.05); object-position: center 70%; }
-  #cell-family-box-jugoso .cell-img { transform: scale(0.89); object-position: center 10%; }
-  #cell-duelo-infiel-mix .cell-img { transform: scale(1.2); object-position: center 65%; }
+  #cell-mini-snack-personal-infiel .cell-img { transform: scale(1.2); object-position: center 65%; }
+  #cell-mini-snack-especial-infiel .cell-img { transform: scale(1.05); object-position: center 70%; }
+  #cell-snack-personal-clasico .cell-img { transform: scale(0.89); object-position: center 10%; }
+  #cell-tocto-infiel .cell-img { transform: scale(1.2); object-position: center 65%; }
+  #cell-snack-personal-especial .cell-img { transform: scale(1.05); object-position: center 70%; }
+  #cell-snack-duo-clasico .cell-img { transform: scale(0.89); object-position: center 10%; }
+  #cell-snack-duo-especial .cell-img { transform: scale(1.2); object-position: center 65%; }
 
-  #cell-box-infiel-personal:hover .cell-img, #cell-box-infiel-personal[data-active="true"] .cell-img { transform: scale(1.4); filter: brightness(1) saturate(1); }
-  #cell-pack-pareja-crocante:hover .cell-img, #cell-pack-pareja-crocante[data-active="true"] .cell-img { transform: scale(1.2); filter: brightness(1) saturate(1); }
-  #cell-family-box-jugoso:hover .cell-img, #cell-family-box-jugoso[data-active="true"] .cell-img { transform: scale(1.1); filter: brightness(1) saturate(1); }
-  #cell-duelo-infiel-mix:hover .cell-img, #cell-duelo-infiel-mix[data-active="true"] .cell-img { transform: scale(1.4); filter: brightness(1) saturate(1); }
+  #cell-mini-snack-personal-infiel:hover .cell-img, #cell-mini-snack-personal-infiel[data-active="true"] .cell-img { transform: scale(1.4); filter: brightness(1) saturate(1); }
+  #cell-mini-snack-especial-infiel:hover .cell-img, #cell-mini-snack-especial-infiel[data-active="true"] .cell-img { transform: scale(1.2); filter: brightness(1) saturate(1); }
+  #cell-snack-personal-clasico:hover .cell-img, #cell-snack-personal-clasico[data-active="true"] .cell-img { transform: scale(1.1); filter: brightness(1) saturate(1); }
+  #cell-tocto-infiel:hover .cell-img, #cell-tocto-infiel[data-active="true"] .cell-img { transform: scale(1.4); filter: brightness(1) saturate(1); }
+  #cell-snack-personal-especial:hover .cell-img, #cell-snack-personal-especial[data-active="true"] .cell-img { transform: scale(1.2); filter: brightness(1) saturate(1); }
+  #cell-snack-duo-clasico:hover .cell-img, #cell-snack-duo-clasico[data-active="true"] .cell-img { transform: scale(1.1); filter: brightness(1) saturate(1); }
+  #cell-snack-duo-especial:hover .cell-img, #cell-snack-duo-especial[data-active="true"] .cell-img { transform: scale(1.4); filter: brightness(1) saturate(1); }
 
   /* Barra de nombre en la celda */
   .cell-name-bar {
