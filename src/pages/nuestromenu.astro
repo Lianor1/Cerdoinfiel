@@ -74,8 +74,15 @@ const salsas = [
         <div class="salsas-grid">
           {salsas.map((salsa) => (
             <div class="salsa-card" style={`--salsa-color: ${salsa.color}`}>
-              <div class="salsa-img-wrap">
-                <img src={salsa.img} alt={`Salsa ${salsa.name}`} class="salsa-img" loading="lazy" decoding="async" />
+              <div class="salsa-visuals">
+                <div class="flame-container">
+                  <div class="flame flame-1"></div>
+                  <div class="flame flame-2"></div>
+                  <div class="flame flame-3"></div>
+                </div>
+                <div class="salsa-img-wrap">
+                  <img src={salsa.img} alt={`Salsa ${salsa.name}`} class="salsa-img" loading="lazy" decoding="async" />
+                </div>
               </div>
               <h3 class="salsa-name">{salsa.name}</h3>
               <p class="salsa-desc">{salsa.desc}</p>
@@ -459,6 +466,13 @@ const salsas = [
     box-shadow: 0 0 15px var(--salsa-color);
   }
 
+  .salsa-visuals {
+    position: relative;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
   .salsa-img-wrap {
     width: 120px;
     height: 120px;
@@ -466,12 +480,13 @@ const salsas = [
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    margin-bottom: 1.5rem;
     overflow: hidden;
     background: rgba(0,0,0,0.5);
     border: 2px solid var(--salsa-color);
     transition: all 0.4s ease;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 2;
   }
 
   .salsa-img {
@@ -481,6 +496,52 @@ const salsas = [
     transition: transform 0.4s ease;
   }
 
+  /* Efecto de Fuego (Llamas) */
+  .flame-container {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .flame {
+    position: absolute;
+    bottom: 10px;
+    background: var(--salsa-color);
+    border-radius: 50% 0 50% 50%;
+    transform: rotate(-45deg);
+    filter: drop-shadow(0 0 10px var(--salsa-color)) blur(2px);
+  }
+
+  .flame-1 {
+    width: 40px; height: 40px;
+    left: 15%;
+    bottom: 30px;
+    animation: flicker 0.6s infinite alternate;
+  }
+  .flame-2 {
+    width: 60px; height: 60px;
+    left: 50%; margin-left: -30px;
+    animation: flicker 0.5s infinite alternate-reverse;
+  }
+  .flame-3 {
+    width: 45px; height: 45px;
+    right: 15%;
+    bottom: 25px;
+    animation: flicker 0.7s infinite alternate;
+  }
+
+  @keyframes flicker {
+    0% { transform: rotate(-45deg) scale(0.9) translateY(0); opacity: 0.8; }
+    100% { transform: rotate(-45deg) scale(1.1) translateY(-10px); opacity: 1; }
+  }
+
   .salsa-card:hover .salsa-img-wrap {
     transform: translateY(-5px);
     box-shadow: 0 5px 20px var(--salsa-color);
@@ -488,6 +549,10 @@ const salsas = [
   
   .salsa-card:hover .salsa-img {
     transform: scale(1.1);
+  }
+
+  .salsa-card:hover .flame-container {
+    opacity: 1;
   }
 
   .salsa-name {
