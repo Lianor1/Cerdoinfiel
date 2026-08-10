@@ -1,17 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { acompanamientos } from '../../data/salsas';
 ---
 
 <Layout title="Cerdo Infiel | Salsas y Extras">
   <main class="salsas-page">
     
-    <!-- HEADER -->
-    <header class="page-header">
-      <h1 class="page-title">SALSAS Y EXTRAS</h1>
-      <div class="badge">CARTEL CONFIRMADO</div>
-      <p class="page-subtitle">LOS ACOMPAÑAMIENTOS OFICIALES PARA TU BOWL</p>
-    </header>
+    <!-- Hero Section (La Confesión) -->
     <!-- Hero Section (La Confesión) -->
     <section class="hero-section">
       <h1 class="hero-title-main">LA CONFESIÓN</h1>
@@ -120,31 +114,6 @@ import { acompanamientos } from '../../data/salsas';
       </div>
     </section>
 
-    <!-- GRID -->
-    <section class="grid-section">
-      <div class="grid-container">
-        {acompanamientos.map((item) => (
-          <a href={`/salsas-y-extras/${item.id}`} class="artist-card group" aria-label={`Ver detalles de ${item.nombre}`}>
-            
-            <!-- Esquinas Doradas -->
-            <div class="corner corner-tl"></div>
-            <div class="corner corner-tr"></div>
-            <div class="corner corner-bl"></div>
-            <div class="corner corner-br"></div>
-
-            <div class="card-image-wrap">
-              <img src={item.img} alt={item.nombre} class="card-image" transition:name={`salsa-img-${item.id}`} />
-              <div class="card-overlay"></div>
-            </div>
-            
-            <div class="card-content">
-              <h2 class="card-name">{item.nombre}</h2>
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
-
   </main>
 </Layout>
 
@@ -161,168 +130,7 @@ import { acompanamientos } from '../../data/salsas';
     align-items: center;
   }
 
-  /* ── HEADER ── */
-  .page-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
 
-  .page-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 900;
-    letter-spacing: 0.15em;
-    color: #fce8cc;
-    margin: 0;
-    text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-  }
-
-  .badge {
-    border: 1px solid rgba(212, 175, 55, 0.5); /* Dorado oscuro */
-    color: #D4AF37;
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    padding: 0.4rem 1.2rem;
-    border-radius: 50px;
-    display: inline-block;
-  }
-
-  .page-subtitle {
-    font-family: 'Cinzel', serif;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.15em;
-    margin-top: 0.5rem;
-  }
-
-  /* ── GRID ── */
-  .grid-section {
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 2rem;
-  }
-
-  .grid-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  /* ── TARJETA ESTILO "ARTISTAS" ── */
-  .artist-card {
-    position: relative;
-    width: 100%;
-    max-width: 320px;
-    height: 450px;
-    border-radius: 8px;
-    background: #111;
-    overflow: hidden;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .artist-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-    border-color: rgba(212, 175, 55, 0.3);
-  }
-
-  /* Esquinas doradas */
-  .corner {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    border: 2px solid #D4AF37;
-    z-index: 10;
-    opacity: 0.5;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .artist-card:hover .corner {
-    opacity: 1;
-  }
-
-  .corner-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
-  .artist-card:hover .corner-tl { transform: translate(-2px, -2px); }
-
-  .corner-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
-  .artist-card:hover .corner-tr { transform: translate(2px, -2px); }
-
-  .corner-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
-  .artist-card:hover .corner-bl { transform: translate(-2px, 2px); }
-
-  .corner-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
-  .artist-card:hover .corner-br { transform: translate(2px, 2px); }
-
-  /* Imagen y Overlay */
-  .card-image-wrap {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle at center, rgba(30,30,35,1) 0%, rgba(10,10,12,1) 100%);
-  }
-
-  .card-image {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-    transform: scale(1.4);
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.8)) contrast(1.1);
-    z-index: 1;
-    /* Eliminar fondo gris visualmente usando una máscara circular difuminada */
-    -webkit-mask-image: radial-gradient(circle at center, black 45%, rgba(0,0,0,0.8) 55%, transparent 65%);
-    mask-image: radial-gradient(circle at center, black 45%, rgba(0,0,0,0.8) 55%, transparent 65%);
-  }
-
-  .artist-card:hover .card-image {
-    transform: scale(1.5);
-  }
-
-  .card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
-    z-index: 2;
-  }
-
-  /* Nombre abajo */
-  .card-content {
-    position: absolute;
-    bottom: 2rem;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    z-index: 3;
-    padding: 0 1rem;
-  }
-
-  .card-name {
-    font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.15em;
-    margin: 0;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-    transition: color 0.3s ease;
-  }
-
-  .artist-card:hover .card-name {
-    color: #D4AF37; /* Se pinta de dorado al hacer hover */
-  }
 
   /* LA CONFESION Y CHISME */
   .hero-section {
