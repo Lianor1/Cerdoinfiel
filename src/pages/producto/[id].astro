@@ -107,15 +107,26 @@ const { producto } = Astro.props;
   ══════════════════════════════════════ */
   .product-detail-page {
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh removido para que el footer suba */
     background: #080404; /* Color midnight */
     color: #f5efe6;
     position: relative;
     overflow-x: hidden;
     padding-top: 5rem;
+    padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
   }
+</style>
+<style is:global>
+  /* Sobrescribir el min-height del main principal para que el footer suba pegado al contenido */
+  main {
+    min-height: auto !important;
+  }
+  body {
+    background: #080404 !important;
+  }
+
 
   .bg-glow {
     position: absolute;
