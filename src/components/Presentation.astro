@@ -148,6 +148,9 @@ import { productos } from '../data/productos';
             <span class="cf-corner cf-bl"></span>
             <span class="cf-corner cf-br"></span>
           </span>
+          {p.id === 'tocto-infiel' && (
+            <span class="reservation-tooltip">¡PREVIA RESERVA!</span>
+          )}
         </button>
       ))}
     </div>
@@ -799,6 +802,34 @@ import { productos } from '../data/productos';
     color: var(--cream);
     text-align: center;
     text-wrap: balance;
+  }
+
+  /* Tooltip Tocto Infiel */
+  .reservation-tooltip {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--pink);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    font-weight: 800;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 20;
+    box-shadow: 0 4px 12px rgba(232,0,111,0.6);
+    white-space: nowrap;
+  }
+
+  .product-cell:hover .reservation-tooltip,
+  .product-cell[data-active="true"] .reservation-tooltip {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* Marco de esquinas en cada celda */
