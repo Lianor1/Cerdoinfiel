@@ -4,16 +4,118 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Cerdo Infiel | Nosotros">
   <main class="nosotros-page">
-    
-    <!-- Efecto Niebla/Glow de fondo -->
     <div class="bg-glow"></div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <h1 class="hero-title">LA CONFESIÓN</h1>
-      <p class="hero-subtitle">La historia de un romance prohibido con el sabor.</p>
+    <!-- Sección 1: Nuestra Pasión -->
+    <section class="section-split">
+      <div class="split-content">
+        <h2 class="section-title">Nuestra Pasión</h2>
+        <h3 class="section-subtitle">CERDO INFIEL: Autenticidad en Cada Bocado</h3>
+        <p class="section-text">
+          No somos solo un lugar de comida; somos guardianes de un sabor tradicional, preparado con pasión para aquellos que buscan lo auténtico. Creemos que la comida debe ser una experiencia, un momento especial que te haga sonreír y, sí, quizás un poquito "infiel" a la rutina diaria.
+          <br><br>
+          Nuestra misión es simple: conquistar tu paladar con la calidad que te mereces. Por eso, nos dedicamos a perfeccionar cada elemento de nuestros snacks, desde la selección de la carne hasta el toque final de nuestras cremas.
+        </p>
+      </div>
+      <div class="split-image">
+        <img src="/images/nosotros/pasion.jpg" alt="Detalle de chicharrón jugoso" />
+      </div>
+    </section>
+
+    <!-- Sección 2: El Arte de la Combinación Perfecta -->
+    <section class="section-ingredients">
+      <div class="ingredients-header">
+        <h2 class="section-title">El Arte de la Combinación Perfecta</h2>
+        <h3 class="section-subtitle">Disfruta de la Combinación Perfecta</h3>
+        <p class="section-text text-center">¿Cuál es nuestro secreto? No hay secretos, solo ingredientes de primera y mucho corazón.</p>
+      </div>
       
-      <!-- Flecha para bajar -->
+      <div class="ingredients-grid">
+        <div class="ingredient-card">
+          <img src="/images/nosotros/pasion.jpg" alt="Chicharrón Jugoso" />
+          <h4>Chicharrón Jugoso</h4>
+          <p>Seleccionamos la mejor carne y la preparamos para que esté dorada por fuera y tierna por dentro.</p>
+        </div>
+        <div class="ingredient-card">
+          <img src="/images/nosotros/chifle.jpg" alt="Chifles de Plátano Crujientes" />
+          <h4>Canchita y Chifles</h4>
+          <p>El acompañamiento perfecto que aporta ese 'crunch' inigualable. Finas láminas de plátano frito que añaden un toque dulce y salado.</p>
+        </div>
+        <div class="ingredient-card">
+          <img src="/images/nosotros/salsas.jpg" alt="Cremas de la Casa" />
+          <h4>Cremas de la Casa</h4>
+          <p>Nuestra joya. Una crema de ají con el toque ideal de sabor para potenciar cada bocado.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 3: Conoce Nuestras Opciones -->
+    <section class="section-options">
+      <div class="options-image">
+        <img src="/images/nosotros/opciones.jpg" alt="Nuestras Opciones de Snack" />
+      </div>
+      <div class="options-content">
+        <h2 class="section-title">Conoce Nuestras Opciones</h2>
+        <h3 class="section-subtitle">Prepara tu Paladar para Hoy</h3>
+        <p class="section-text">Tenemos la opción ideal para tu antojo. Ambas preparadas para hacer de tu momento algo especial.</p>
+        
+        <div class="options-compare">
+          <div class="option-box">
+            <h4>SNACK CLÁSICO</h4>
+            <ul>
+              <li>Porción de chicharrón selecto</li>
+              <li>Canchita crocante</li>
+              <li>Crema de ají de la casa</li>
+              <li>Menta (cortesía de la casa)</li>
+            </ul>
+          </div>
+          <div class="option-box special">
+            <h4>SNACK ESPECIAL</h4>
+            <ul>
+              <li>Porción de chicharrón selecto</li>
+              <li>Canchita crocante</li>
+              <li>Chifles de plátano crujientes</li>
+              <li>Crema de ají de la casa</li>
+              <li>Menta (cortesía de la casa)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 4: Tu Momento Especial -->
+    <section class="section-moment" style="background-image: url('/images/nosotros/momento.jpg');">
+      <div class="moment-overlay">
+        <h2 class="section-title">Tu Momento Especial</h2>
+        <h3 class="section-subtitle" style="color:#fff;">Haz de tu Fin de Semana Algo Espectacular</h3>
+        <p class="section-text" style="color:#fff;">
+          "Cerdo Infiel" es ideal para esos días en los que solo quieres disfrutar. Ya sea para compartir en familia, con amigos, o simplemente para darte ese gustito lleno de auténtico sabor que te has ganado.
+          <br><br>
+          Porque los fines de semana saben mejor con nosotros.
+        </p>
+        <div class="moment-info">
+          <strong>Estamos para ti:</strong><br/>
+          MIÉRCOLES, JUEVES, VIERNES y SÁBADO<br/>
+          De 9:30 am a 4:00 pm.<br/>
+          Estamos en ANDAHUAYLAS - APURIMAC.
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 5: Llama a la Acción -->
+    <section class="section-cta">
+      <img src="/images/02.png" alt="Logo Cerdo Infiel" class="cta-logo" />
+      <h2 class="section-title">¡No te Quedes con las Ganas!</h2>
+      <p class="section-text">Prepárate para conquistar cada bocado. Haz tu pedido con anticipación y asegura tu momento infiel.</p>
+      <a href="https://wa.me/51959351752" class="cta-phone" target="_blank">Llama o escribe al:<br/><span>959 351 752</span></a>
+    </section>
+
+    <div class="separator-line"></div>
+
+    <!-- Hero Section (Antigua La Confesión) -->
+    <section class="hero-section">
+      <h1 class="hero-title-main">LA CONFESIÓN</h1>
+      <p class="hero-subtitle">La historia de un romance prohibido con el sabor.</p>
       <div class="scroll-down">
         <span>DESCUBRE LA VERDAD</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-down">
@@ -24,8 +126,6 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- Capítulos de la Historia -->
     <section class="story-chapters">
-      
-      <!-- Capítulo 1 -->
       <article class="chapter">
         <h2 class="chapter-number">CAPÍTULO I</h2>
         <h3 class="chapter-title">El Origen</h3>
@@ -36,7 +136,6 @@ import Layout from '../layouts/Layout.astro';
         </p>
       </article>
 
-      <!-- Capítulo 2 -->
       <article class="chapter">
         <h2 class="chapter-number">CAPÍTULO II</h2>
         <h3 class="chapter-title">El Dolor</h3>
@@ -47,7 +146,6 @@ import Layout from '../layouts/Layout.astro';
         </p>
       </article>
 
-      <!-- Capítulo 3 -->
       <article class="chapter">
         <h2 class="chapter-number">CAPÍTULO III</h2>
         <h3 class="chapter-title">La Confesión</h3>
@@ -58,7 +156,6 @@ import Layout from '../layouts/Layout.astro';
         </p>
       </article>
 
-      <!-- Capítulo 4 -->
       <article class="chapter">
         <h2 class="chapter-number">CAPÍTULO IV</h2>
         <h3 class="chapter-title">La Invitación</h3>
@@ -68,7 +165,6 @@ import Layout from '../layouts/Layout.astro';
           Olvídate de portarte bien. Date ese gusto que te mereces. Hemos perfeccionado el arte de hacer un chicharrón que te hará cerrar los ojos en la primera mordida. ¿Listo para tu primera infidelidad?"
         </p>
       </article>
-
     </section>
 
     <!-- El Rincón del Chisme -->
@@ -79,7 +175,6 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="chisme-grid">
-        <!-- Testimonio 1 -->
         <div class="chisme-card">
           <div class="chisme-user">
             <div class="avatar">👤</div>
@@ -93,7 +188,6 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
 
-        <!-- Testimonio 2 -->
         <div class="chisme-card">
           <div class="chisme-user">
             <div class="avatar">😈</div>
@@ -103,11 +197,10 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
           <p class="chisme-msg">
-            "Mi nutricionista me sigue en Instagram. Tuve que bloquearla temporalmente para poder subir una foto bañando mi chicharrón en salsa golf. Való la pena."
+            "Mi nutricionista me sigue en Instagram. Tuve que bloquearla temporalmente para poder subir una foto bañando mi chicharrón en salsa golf. Valió la pena."
           </p>
         </div>
 
-        <!-- Testimonio 3 -->
         <div class="chisme-card">
           <div class="chisme-user">
             <div class="avatar">💔</div>
@@ -125,12 +218,14 @@ import Layout from '../layouts/Layout.astro';
       <div class="btn-container-center">
         <a href="/nuestromenu" class="btn-pecar">QUIERO PECAR YA</a>
       </div>
-
     </section>
   </main>
 </Layout>
 
 <style>
+  /* ══════════════════════════════════════
+     ESTILOS GENERALES NOSOTROS
+  ══════════════════════════════════════ */
   .nosotros-page {
     width: 100%;
     min-height: 100vh;
@@ -138,8 +233,9 @@ import Layout from '../layouts/Layout.astro';
     color: #f5efe6;
     position: relative;
     overflow-x: hidden;
-    padding-top: 5rem;
+    padding-top: 6rem;
     padding-bottom: 5rem;
+    font-family: 'Inter', sans-serif;
   }
 
   .bg-glow {
@@ -150,24 +246,296 @@ import Layout from '../layouts/Layout.astro';
     width: clamp(400px, 80vw, 1000px);
     height: clamp(400px, 80vw, 1000px);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(232,0,111,0.15) 0%, rgba(8,4,4,0) 70%);
+    background: radial-gradient(circle, rgba(232,0,111,0.12) 0%, rgba(8,4,4,0) 70%);
     z-index: 0;
     pointer-events: none;
   }
 
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #e8006f;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .section-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    color: #D4AF37;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .section-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 2rem;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+
+  /* ══════════════════════════════════════
+     SECCIÓN 1 & 3: SPLIT (Texto + Imagen)
+  ══════════════════════════════════════ */
+  .section-split, .section-options {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto 8rem auto;
+    padding: 0 2rem;
+  }
+
+  @media(min-width: 900px) {
+    .section-split, .section-options {
+      flex-direction: row;
+      align-items: center;
+    }
+    .split-content, .options-content { flex: 1; padding-right: 2rem; }
+    .split-image, .options-image { flex: 1; }
+  }
+
+  .split-image img, .options-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(232,0,111,0.3);
+  }
+
+  /* ══════════════════════════════════════
+     SECCIÓN 2: INGREDIENTES
+  ══════════════════════════════════════ */
+  .section-ingredients {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto 8rem auto;
+    padding: 0 2rem;
+  }
+
+  .ingredients-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .ingredient-card {
+    background: rgba(15, 15, 20, 0.6);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .ingredient-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+
+  .ingredient-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 2px solid #e8006f;
+  }
+
+  .ingredient-card h4 {
+    font-family: 'Cinzel', serif;
+    color: #ff9500;
+    font-size: 1.3rem;
+    padding: 1.5rem 1.5rem 0.5rem;
+    margin: 0;
+  }
+
+  .ingredient-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════
+     SECCIÓN 3: OPCIONES (COMPARE)
+  ══════════════════════════════════════ */
+  .options-compare {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media(min-width: 600px) {
+    .options-compare {
+      flex-direction: row;
+    }
+  }
+
+  .option-box {
+    flex: 1;
+    background: rgba(15, 15, 20, 0.8);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .option-box.special {
+    border-color: rgba(232,0,111,0.5);
+    background: linear-gradient(to bottom, rgba(232,0,111,0.1), rgba(15, 15, 20, 0.8));
+  }
+
+  .option-box h4 {
+    font-family: 'Cinzel', serif;
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .option-box.special h4 {
+    color: #e8006f;
+    border-bottom-color: rgba(232,0,111,0.3);
+  }
+
+  .option-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .option-box li {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .option-box li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #25D366;
+  }
+
+  /* ══════════════════════════════════════
+     SECCIÓN 4: TU MOMENTO ESPECIAL
+  ══════════════════════════════════════ */
+  .section-moment {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin-bottom: 8rem;
+  }
+
+  .moment-overlay {
+    background: rgba(8, 4, 4, 0.85); /* Oscurecer para leer bien el texto */
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .moment-info {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 2rem;
+    border-radius: 12px;
+    font-family: 'Cinzel', serif;
+    color: #fce8cc;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-top: 2rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ══════════════════════════════════════
+     SECCIÓN 5: CTA
+  ══════════════════════════════════════ */
+  .section-cta {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 2rem 8rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 20px rgba(232,0,111,0.6));
+  }
+
+  .cta-phone {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1.5rem 3rem;
+    background: rgba(232,0,111,0.1);
+    border: 2px solid #e8006f;
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+
+  .cta-phone span {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #e8006f;
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .cta-phone:hover {
+    background: #e8006f;
+  }
+  .cta-phone:hover span {
+    color: #fff;
+  }
+
+  .separator-line {
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+    margin: 0 auto 6rem auto;
+  }
+
+  /* ══════════════════════════════════════
+     SECCIONES ANTIGUAS (LA CONFESIÓN Y CHISME)
+  ══════════════════════════════════════ */
+  
   .hero-section {
     position: relative;
     z-index: 1;
     text-align: center;
-    padding: 6rem 2rem 4rem 2rem;
+    padding: 0 2rem 4rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
   }
 
-  .hero-title {
+  .hero-title-main {
     font-family: 'Cinzel', serif;
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 900;
@@ -198,10 +566,7 @@ import Layout from '../layouts/Layout.astro';
     animation: bounce 2s infinite;
   }
 
-  .arrow-down {
-    width: 24px;
-    height: 24px;
-  }
+  .arrow-down { width: 24px; height: 24px; }
 
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -233,10 +598,8 @@ import Layout from '../layouts/Layout.astro';
   .chapter::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
     background: linear-gradient(to bottom, #D4AF37, #e8006f);
   }
 
@@ -262,16 +625,8 @@ import Layout from '../layouts/Layout.astro';
     color: rgba(255,255,255,0.8);
   }
 
-  .chapter-text strong {
-    color: #fff;
-    font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
-  }
-
-  .chapter-text em {
-    color: #e8006f;
-    font-style: italic;
-  }
+  .chapter-text strong { color: #fff; font-family: 'Cinzel', serif; font-size: 1.2rem; }
+  .chapter-text em { color: #e8006f; font-style: italic; }
 
   /* El Rincón del Chisme */
   .chisme-section {
@@ -311,14 +666,12 @@ import Layout from '../layouts/Layout.astro';
     background: rgba(30, 30, 35, 0.6);
     border-radius: 16px;
     padding: 1.5rem;
-    border-left: 4px solid #25D366; /* Verde tipo Whatsapp */
+    border-left: 4px solid #25D366; 
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     transition: transform 0.3s ease;
   }
 
-  .chisme-card:hover {
-    transform: translateY(-5px);
-  }
+  .chisme-card:hover { transform: translateY(-5px); }
 
   .chisme-user {
     display: flex;
@@ -330,8 +683,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .avatar {
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     background: #333;
     border-radius: 50%;
     display: flex;
@@ -340,22 +692,9 @@ import Layout from '../layouts/Layout.astro';
     font-size: 1.2rem;
   }
 
-  .user-info {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .user-name {
-    font-weight: 700;
-    color: #fff;
-    font-size: 0.9rem;
-  }
-
-  .user-time {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.4);
-  }
-
+  .user-info { display: flex; flex-direction: column; }
+  .user-name { font-weight: 700; color: #fff; font-size: 0.9rem; }
+  .user-time { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
   .chisme-msg {
     font-size: 1rem;
     line-height: 1.6;
@@ -391,8 +730,6 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @media (max-width: 768px) {
-    .chapter {
-      padding: 2rem;
-    }
+    .chapter { padding: 2rem; }
   }
 </style>
