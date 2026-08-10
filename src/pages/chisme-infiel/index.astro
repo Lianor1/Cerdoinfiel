@@ -1,114 +1,67 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { historias } from '../../data/historias.js';
 ---
 
-<Layout title="Cerdo Infiel | Salsas y Extras">
+<Layout title="Cerdo Infiel | La Confesión">
   <main class="salsas-page">
     
-    <!-- Hero Section (La Confesión) -->
-    <!-- Hero Section (La Confesión) -->
     <section class="hero-section">
       <h1 class="hero-title-main">LA CONFESIÓN</h1>
       <p class="hero-subtitle">La historia de un romance prohibido con el sabor.</p>
       <div class="scroll-down">
-        <span>DESCUBRE LA VERDAD</span>
+        <span>DESLIZA PARA DESCUBRIR</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-down">
           <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
         </svg>
       </div>
     </section>
 
-    <!-- Capítulos de la Historia -->
-    <section class="story-chapters">
-      <article class="chapter">
-        <h2 class="chapter-number">CAPÍTULO I</h2>
-        <h3 class="chapter-title">El Origen</h3>
-        <p class="chapter-text">
-          "Todo comenzó con una traición...<br/><br/>
-          La lealtad estaba sobrevalorada cuando todo lo que nos servían era más de lo mismo. Hartos de la comida monótona, empezamos a experimentar en secreto. A escondidas de lo tradicional, mezclamos, horneamos y freímos hasta encontrar el pecado perfecto. <br/><br/>
-          Cuando lo probamos, supimos que no había vuelta atrás: le habíamos sido infieles a todo lo que creíamos que era un buen chicharrón. Así fundamos <strong>Cerdo Infiel</strong>. Porque a veces, para encontrar el verdadero amor (a primera mordida), tienes que atreverte a cruzar la línea."
-        </p>
-      </article>
+    <!-- Swiper Carousel Section -->
+    <section class="carousel-section">
+      <swiper-container 
+        class="my-swiper"
+        effect="coverflow" 
+        grab-cursor="true" 
+        centered-slides="true" 
+        slides-per-view="auto" 
+        coverflow-effect-rotate="0" 
+        coverflow-effect-stretch="0" 
+        coverflow-effect-depth="200" 
+        coverflow-effect-modifier="1" 
+        coverflow-effect-slide-shadows="true"
+        keyboard="true"
+        mousewheel="true"
+        loop="true"
+      >
+        {historias.map((historia) => (
+          <swiper-slide class="swiper-card" style={`background-image: url('${historia.imagen}');`}>
+            {historia.tipo === 'capitulo' ? (
+              <article class="chapter">
+                <div class="card-content">
+                  <h2 class="chapter-number">{historia.numero}</h2>
+                  <h3 class="chapter-title">{historia.titulo}</h3>
+                  <p class="chapter-text" set:html={historia.texto}></p>
+                </div>
+              </article>
+            ) : (
+              <div class="chisme-card">
+                <div class="card-content">
+                  <div class="chisme-user">
+                    <div class="avatar">{historia.usuario.includes('@') ? '😈' : '👤'}</div>
+                    <div class="user-info">
+                      <span class="user-name">{historia.usuario}</span>
+                      <span class="user-time">{historia.tiempo}</span>
+                    </div>
+                  </div>
+                  <p class="chisme-msg" set:html={historia.texto}></p>
+                </div>
+              </div>
+            )}
+          </swiper-slide>
+        ))}
+      </swiper-container>
 
-      <article class="chapter">
-        <h2 class="chapter-number">CAPÍTULO II</h2>
-        <h3 class="chapter-title">El Dolor</h3>
-        <p class="chapter-text">
-          "Nos rompieron el corazón, así que rompimos las reglas.<br/><br/>
-          Todos hemos sufrido una traición. A nosotros nos traicionaron esos chicharrones secos, sin vida, esos que prometían ser crujientes y te dejaban un mal sabor de boca. Fue tanta la decepción, que decidimos tomar las riendas y vengarnos de la mejor manera: creando una obra maestra.<br/><br/>
-          <strong>Cerdo Infiel</strong> es nuestro desahogo. Es el lugar seguro para los que buscan un amor de verdad, de esos que crujen fuerte y nunca te dejan a medias. Si te engañaron antes, ven con nosotros. Prometemos no fallarte."
-        </p>
-      </article>
-
-      <article class="chapter">
-        <h2 class="chapter-number">CAPÍTULO III</h2>
-        <h3 class="chapter-title">La Confesión</h3>
-        <p class="chapter-text">
-          "Sí, somos infieles... y no nos arrepentimos.<br/><br/>
-          Le fuimos infieles a las dietas estrictas. Le pusimos los cuernos a las ensaladas sin gracia y engañamos a la comida de todos los días. ¿Por qué? Porque la vida es muy corta para comer sin pasión. <br/><br/>
-          Nacimos de la necesidad de pecar. Nos cansamos de la rutina y decidimos crear el romance perfecto: un chicharrón tan jugoso, crocante y pecaminoso que te hará olvidar a todos los demás. No te sientas culpable por desearlo. Aquí, la infidelidad es <em>Amor a primera mordida</em>."
-        </p>
-      </article>
-
-      <article class="chapter">
-        <h2 class="chapter-number">CAPÍTULO IV</h2>
-        <h3 class="chapter-title">La Invitación</h3>
-        <p class="chapter-text">
-          "Bienvenido al lado oscuro (y crujiente) del placer.<br/><br/>
-          Dicen que lo prohibido sabe mejor, y en <strong>Cerdo Infiel</strong> somos la prueba viviente. No somos un restaurante, somos el club secreto de los que saben disfrutar. Si estás leyendo esto, es porque tú también quieres caer en la tentación.<br/><br/>
-          Olvídate de portarte bien. Date ese gusto que te mereces. Hemos perfeccionado el arte de hacer un chicharrón que te hará cerrar los ojos en la primera mordida. ¿Listo para tu primera infidelidad?"
-        </p>
-      </article>
-    </section>
-
-    <!-- El Rincón del Chisme -->
-    <section class="chisme-section">
-      <div class="chisme-header">
-        <h2 class="chisme-title">EL RINCÓN DEL CHISME 🤫</h2>
-        <p class="chisme-subtitle">Lo que pasa en Cerdo Infiel... se queda en Cerdo Infiel. Confesiones reales de nuestros pecadores.</p>
-      </div>
-
-      <div class="chisme-grid">
-        <div class="chisme-card">
-          <div class="chisme-user">
-            <div class="avatar">👤</div>
-            <div class="user-info">
-              <span class="user-name">Cliente Anónimo</span>
-              <span class="user-time">Ayer a las 20:30</span>
-            </div>
-          </div>
-          <p class="chisme-msg">
-            "Le dije a mi novia que estaba en el gimnasio... pero la verdad es que estaba devorando un Bowl Mediano. Perdóname mi amor, el chicharrón estaba muy bueno." 
-          </p>
-        </div>
-
-        <div class="chisme-card">
-          <div class="chisme-user">
-            <div class="avatar">😈</div>
-            <div class="user-info">
-              <span class="user-name">@PecadorFitness</span>
-              <span class="user-time">Visto hace 2 hrs</span>
-            </div>
-          </div>
-          <p class="chisme-msg">
-            "Mi nutricionista me sigue en Instagram. Tuve que bloquearla temporalmente para poder subir una foto bañando mi chicharrón en salsa golf. Valió la pena."
-          </p>
-        </div>
-
-        <div class="chisme-card">
-          <div class="chisme-user">
-            <div class="avatar">💔</div>
-            <div class="user-info">
-              <span class="user-name">La Ex Arrepentida</span>
-              <span class="user-time">En línea</span>
-            </div>
-          </div>
-          <p class="chisme-msg">
-            "Juraba que mi ex era lo más crujiente que me había pasado... hasta que probé el chicharrón de aquí. Lo bloqueé a él y agendé el número de ustedes."
-          </p>
-        </div>
-      </div>
-      
       <div class="btn-container-center">
         <a href="/nuestromenu" class="btn-pecar">QUIERO PECAR YA</a>
       </div>
@@ -117,31 +70,31 @@ import Layout from '../../layouts/Layout.astro';
   </main>
 </Layout>
 
+<script>
+  import { register } from 'swiper/element/bundle';
+  register();
+</script>
+
 <style>
   .salsas-page {
     width: 100%;
     min-height: 100vh;
-    background: #080404; /* Color midnight del tema */
+    background: #080404; 
     color: #f5efe6;
     padding-top: 8rem;
     padding-bottom: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
   }
 
-
-
-  /* LA CONFESION Y CHISME */
   .hero-section {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     text-align: center;
-    padding: 4rem 2rem 4rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
   }
 
   .hero-title-main {
@@ -161,7 +114,7 @@ import Layout from '../../layouts/Layout.astro';
     color: #D4AF37;
     letter-spacing: 0.1em;
     max-width: 600px;
-    margin: 0 auto 4rem auto;
+    margin: 0 auto 2rem auto;
   }
 
   .scroll-down {
@@ -183,105 +136,86 @@ import Layout from '../../layouts/Layout.astro';
     60% { transform: translateY(-5px); }
   }
 
-  .story-chapters {
+  /* Carousel Section */
+  .carousel-section {
+    width: 100%;
+    max-width: 1900px;
+    padding: 2rem 0;
     position: relative;
-    z-index: 1;
-    max-width: 800px;
-    margin: 0 auto 6rem auto;
-    padding: 2rem;
+    z-index: 5;
+  }
+
+  .my-swiper {
+    width: 100%;
+    padding: 50px 0;
+  }
+
+  .swiper-card {
+    background-position: center;
+    background-size: cover;
+    width: 320px;
+    height: 480px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* EFECTO BLUR PARA LAS TARJETAS TRASERAS (IGUAL A LA FOTO) */
+  swiper-slide:not(.swiper-slide-active) {
+    filter: blur(5px);
+    opacity: 0.6;
+  }
+
+  @media (min-width: 768px) {
+    .swiper-card {
+      width: 400px;
+      height: 500px;
+    }
+  }
+
+  /* Gradiente para que el texto se lea sobre la foto */
+  .chapter, .chisme-card {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(8,4,4,0.8) 60%, rgba(8,4,4,1) 100%);
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    justify-content: flex-end; /* Alinea el texto abajo como en la foto */
   }
 
-  .chapter {
-    background: rgba(15, 15, 20, 0.4);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 16px;
-    padding: 3rem;
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
-    text-align: left;
+  .card-content {
+    padding: 2rem;
+    max-height: 60%;
+    overflow-y: auto;
   }
   
-  .chapter::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    background: linear-gradient(to bottom, #D4AF37, #e8006f);
-  }
-
   .chapter-number {
     font-family: 'Cinzel', serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #e8006f;
     letter-spacing: 0.2em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
   }
 
   .chapter-title {
     font-family: 'Cinzel', serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #D4AF37;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
   }
 
   .chapter-text {
     font-family: system-ui, -apple-system, sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.9);
   }
 
-  .chapter-text strong { color: #fff; font-family: 'Cinzel', serif; font-size: 1.2rem; }
-  .chapter-text em { color: #e8006f; font-style: italic; }
-
-  .chisme-section {
-    position: relative;
-    z-index: 1;
-    max-width: 1000px;
-    margin: 4rem auto 8rem auto;
-    padding: 2rem;
-  }
-
-  .chisme-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .chisme-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    color: #fff;
-    text-shadow: 0 0 15px rgba(255,255,255,0.3);
-    margin-bottom: 1rem;
-  }
-
-  .chisme-subtitle {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.6);
-  }
-
-  .chisme-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-
-  .chisme-card {
-    background: rgba(30, 30, 35, 0.6);
-    border-radius: 16px;
-    padding: 1.5rem;
-    border-left: 4px solid #25D366; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease;
-    text-align: left;
-  }
-
-  .chisme-card:hover { transform: translateY(-5px); }
+  :global(.chapter-text strong) { color: #fff; font-family: 'Cinzel', serif; font-size: 1.05rem; }
+  :global(.chapter-text em) { color: #e8006f; font-style: italic; }
 
   .chisme-user {
     display: flex;
@@ -289,33 +223,44 @@ import Layout from '../../layouts/Layout.astro';
     gap: 1rem;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
   }
 
   .avatar {
-    width: 40px; height: 40px;
-    background: #333;
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    backdrop-filter: blur(5px);
   }
 
   .user-info { display: flex; flex-direction: column; }
-  .user-name { font-weight: 700; color: #fff; font-size: 0.9rem; }
-  .user-time { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+  .user-name { font-weight: 700; color: #fff; font-size: 0.9rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+  .user-time { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+  
   .chisme-msg {
     font-size: 1rem;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+    color: rgba(255,255,255,0.95);
     font-style: italic;
+  }
+
+  /* Scrollbar */
+  .card-content::-webkit-scrollbar {
+    width: 4px;
+  }
+  .card-content::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
   }
 
   .btn-container-center {
     display: flex;
     justify-content: center;
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   .btn-pecar {
@@ -336,9 +281,5 @@ import Layout from '../../layouts/Layout.astro';
   .btn-pecar:hover {
     transform: scale(1.05);
     box-shadow: 0 0 40px rgba(232,0,111,0.8);
-  }
-
-  @media (max-width: 768px) {
-    .chapter { padding: 2rem; }
   }
 </style>
