@@ -47,7 +47,7 @@ const { producto } = Astro.props;
       <!-- ── Lado Derecho: Detalles y Estadísticas ── -->
       <div class="detail-right">
         
-        <h1 class="hero-title" set:html={producto.nombre.replace('\n', '<br/>')}></h1>
+        <h2 class="hero-title" set:html={producto.nombre.replace('\n', '<br/>')}></h2>
         
         <!-- Tarjeta de estadísticas (Estilo Viruzz exacta) -->
         <div class="stats-card">
@@ -243,7 +243,7 @@ const { producto } = Astro.props;
     font-size: clamp(1.8rem, 3vw, 3rem);
     font-weight: 900;
     letter-spacing: 0.05em;
-    color: #fce8cc; /* Tono crema/dorado muy pálido */
+    color: #ff9500; /* Naranja pedido por el usuario */
     margin: 0 0 1.5rem 0;
     line-height: 1.1;
     text-shadow: 0 0 40px rgba(232,0,111,0.2);
