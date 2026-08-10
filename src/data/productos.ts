@@ -44,7 +44,7 @@ export const productos: Producto[] = [
   },
   {
     id: "snack-personal-clasico",
-    nombre: "SNACK PERSONAL\nCLÁSICO",
+    nombre: "SNACK\nPERSONAL CLÁSICO",
     tag: "BOWL PERSONAL",
     precio: "S/ 18.00",
     img: "/images/003 producto.png",
@@ -58,7 +58,7 @@ export const productos: Producto[] = [
   },
   {
     id: "tocto-infiel",
-    nombre: "TOCTO\nINFIEL",
+    nombre: "TOCTO INFIEL",
     tag: "EDICIÓN LIMITADA",
     precio: "S/ 20.00",
     img: "/images/001 producto.png",
@@ -86,7 +86,7 @@ export const productos: Producto[] = [
   },
   {
     id: "snack-duo-clasico",
-    nombre: "SNACK DÚO\nCLÁSICO",
+    nombre: "SNACK\nDÚO CLÁSICO",
     tag: "BOWL PARA DOS",
     precio: "S/ 25.00",
     img: "/images/003 producto.png",
@@ -100,7 +100,7 @@ export const productos: Producto[] = [
   },
   {
     id: "snack-duo-especial",
-    nombre: "SNACK DÚO\nESPECIAL",
+    nombre: "SNACK\nDÚO ESPECIAL",
     tag: "BOWL DÚO PREMIUM",
     precio: "S/ 29.00",
     img: "/images/001 producto.png",
