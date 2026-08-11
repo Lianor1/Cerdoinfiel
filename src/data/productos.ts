@@ -101,7 +101,7 @@ export const productos: Producto[] = [
   {
     id: "snack-duo-especial",
     nombre: "SNACK\nDÚO ESPECIAL",
-    tag: "BOWL DÚO PREMIUM",
+    tag: "BOWL DÚO ESPECIAL",
     precio: "S/29.00",
     img: "/images/007 duo especial.png",
     descripcion: "Para que lo coman juntos mientras se revisan las conversaciones de WhatsApp.\nSi te preguntas si es ético comerse esto solo: sí, la glotonería no es delito.",
@@ -109,7 +109,7 @@ export const productos: Producto[] = [
       { label: "PROTEÍNA", value: "MÁXIMA RACIÓN" },
       { label: "GUARNICIÓN", value: "TODOS LOS EXTRAS" },
       { label: "EXTRA", value: "TODAS LAS CREMAS" },
-      { label: "SABOR", value: "c" }
+      { label: "SABOR", value: "Sabe mejor si le dices que es un amiguito de la universidad." }
     ]
   }
 ];
