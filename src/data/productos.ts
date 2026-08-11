@@ -76,12 +76,12 @@ export const productos: Producto[] = [
     tag: "BOWL PERSONAL ESPECIAL",
     precio: "S/22.00",
     img: "/images/005 clasico.png",
-    descripcion: "Para los que dijeron 'ya no voy a caer' y cayeron en la primera mordida.mirate estas otraves aqui\nTranqui, si te lo comes parado no engorda. Y si no te ven, tampoco cuenta. ",
+    descripcion: "Para los que dijeron ' ya no voy a caer ' y cayeron en la primera mordida.mirate estas otraves aqui\nTranqui, si te lo comes parado no engorda. Y si no te ven, tampoco cuenta. ",
     stats: [
       { label: "PROTEÍNA", value: "CHICHARRÓN ESPECIAL" },
       { label: "GUARNICIÓN", value: "MIX CANCHA + CHIFLES" },
       { label: "EXTRA", value: "HALLS + CREMA PARA LLORAR" },
-      { label: "SABOR", value: "Más tóxico que responder 'nada, tú dirás'" }
+      { label: "SABOR", value: "MEJOR ME LO CUENTAS, QUE TAL ESTA" }
     ]
   },
   {
@@ -90,12 +90,12 @@ export const productos: Producto[] = [
     tag: "BOWL PARA DOS INFIELES",
     precio: "S/25.00",
     img: "/images/006 duo clasico.png",
-    descripcion: "Ideal para compartir... o no. Una ración de sabor infiel.",
+    descripcion: "Para dos pecadores que juraron que solo iban a ' conversar '\nPerfecto para invitar la ración de sabor infiel.\nPara invitar a la persona que tienes silenciada en archivados.",
     stats: [
-      { label: "PROTEÍNA", value: "RACIÓN DOBLE" },
-      { label: "GUARNICIÓN", value: "CAMOTE FAMILIAR" },
-      { label: "EXTRA", value: "DOBLE SARZA" },
-      { label: "SABOR", value: "COMPARTIDO" }
+      { label: "PROTEÍNA", value: "RACIÓN DOBLE DE INFEDILIDAD" },
+      { label: "GUARNICIÓN", value: "MIX COMO LOS INFIELES" },
+      { label: "EXTRA", value: "PICANTE PARA RECORDAR A LA INFIEL" },
+      { label: "SABOR", value: "LAGRIMAS DE COCODRILO EL INFIEL" }
     ]
   },
   {
@@ -104,12 +104,12 @@ export const productos: Producto[] = [
     tag: "BOWL DÚO PREMIUM",
     precio: "S/29.00",
     img: "/images/007 duo especial.png",
-    descripcion: "La máxima expresión del sabor infiel, para dos pecadores.",
+    descripcion: "Para que lo coman juntos mientras se revisan las conversaciones de WhatsApp.\nSi te preguntas si es ético comerse esto solo: sí, la glotonería no es delito.",
     stats: [
       { label: "PROTEÍNA", value: "MÁXIMA RACIÓN" },
       { label: "GUARNICIÓN", value: "TODOS LOS EXTRAS" },
       { label: "EXTRA", value: "TODAS LAS CREMAS" },
-      { label: "SABOR", value: "ÉPICO" }
+      { label: "SABOR", value: "c" }
     ]
   }
 ];
