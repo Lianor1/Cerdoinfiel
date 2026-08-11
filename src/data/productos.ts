@@ -33,7 +33,7 @@ export const productos: Producto[] = [
     nombre: "MINI SNACK\nESPECIAL INFIEL",
     tag: "BOWL MINI ESPECIAL",
     precio: "S/ 13.00",
-    img: "/images/002 producto.png",
+    img: "/images/001 producto.png",
     descripcion: "Para los que siempre quieren más, en tamaño compacto.",
     stats: [
       { label: "PROTEÍNA", value: "DOBLE CHICHARRÓN" },
@@ -47,7 +47,7 @@ export const productos: Producto[] = [
     nombre: "SNACK\nPERSONAL CLÁSICO",
     tag: "BOWL PERSONAL",
     precio: "S/ 18.00",
-    img: "/images/003 producto.png",
+    img: "/images/002 producto.png",
     descripcion: "Un clásico que nunca falla. Rompe la dieta con orgullo.",
     stats: [
       { label: "PROTEÍNA", value: "CHICHARRÓN CLÁSICO" },
@@ -61,7 +61,7 @@ export const productos: Producto[] = [
     nombre: "TOCTO INFIEL",
     tag: "EDICIÓN LIMITADA",
     precio: "S/ 20.00",
-    img: "/images/001 producto.png",
+    img: "/images/004 Tocto.png",
     descripcion: "El más crocante de todos. *Solo con reservación anticipada.*",
     stats: [
       { label: "ESPECIALIDAD", value: "TOCTO CROCANTE" },
@@ -72,10 +72,10 @@ export const productos: Producto[] = [
   },
   {
     id: "snack-personal-especial",
-    nombre: "SNACK PERSONAL\nESPECIAL",
+    nombre: "SNACK\nPERSONAL ESPECIAL",
     tag: "BOWL PERSONAL PLUS",
     precio: "S/ 22.00",
-    img: "/images/002 producto.png",
+    img: "/images/005 clasico.png",
     descripcion: "Sabor potenciado al máximo con nuestra receta especial.",
     stats: [
       { label: "PROTEÍNA", value: "CHICHARRÓN ESPECIAL" },
@@ -89,7 +89,7 @@ export const productos: Producto[] = [
     nombre: "SNACK\nDÚO CLÁSICO",
     tag: "BOWL PARA DOS",
     precio: "S/ 25.00",
-    img: "/images/003 producto.png",
+    img: "/images/006 duo clasico.png",
     descripcion: "Ideal para compartir... o no. Una ración de sabor infiel.",
     stats: [
       { label: "PROTEÍNA", value: "RACIÓN DOBLE" },
@@ -103,7 +103,7 @@ export const productos: Producto[] = [
     nombre: "SNACK\nDÚO ESPECIAL",
     tag: "BOWL DÚO PREMIUM",
     precio: "S/ 29.00",
-    img: "/images/001 producto.png",
+    img: "/images/007 duo especial.png",
     descripcion: "La máxima expresión del sabor infiel, para dos pecadores.",
     stats: [
       { label: "PROTEÍNA", value: "MÁXIMA RACIÓN" },
