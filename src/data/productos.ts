@@ -34,7 +34,7 @@ export const productos: Producto[] = [
     tag: "BOWL MINI ESPECIAL",
     precio: "S/13.00",
     img: "/images/001 producto.png",
-    descripcion: "Rinde mas que tus escusas ' Me quedé sin batería 'el unico snack que te deja.\nChiquito, pero te deja bien lleno y pidiendo repetición.",
+    descripcion: "Rinde mas que tus excusas ' Me quedé sin batería 'el unico snack que te deja.\nChiquito, pero te deja bien lleno y pidiendo repetición.",
     stats: [
       { label: "PROTEÍNA", value: "DOBLE CHICHARRÓN" },
       { label: "GUARNICIÓN", value: "CANCHA + CHICHARON" },
@@ -48,40 +48,40 @@ export const productos: Producto[] = [
     tag: "BOWL PERSONAL CLÁSICO",
     precio: "S/18.00",
     img: "/images/002 producto.png",
-    descripcion: "Aquí no juzgamos si te gusta con harto picante o bien mojadito.\nPero para los que les gusta meterle mano al pote sin pedir permiso.",
+    descripcion: "Aquí no juzgamos si te gusta con harto picante o bien mojadito.\nPero para los que les gusta meterle la mano al pote sin pedir permiso.",
     stats: [
       { label: "PROTEÍNA", value: "CHICHARRÓN CLÁSICO" },
-      { label: "GUARNICIÓN", value: "CAMOTE REGULAR" },
-      { label: "EXTRA", value: "CREMA AL GUSTO" },
-      { label: "SABOR", value: "TRADICIONAL" }
+      { label: "GUARNICIÓN", value: "CANCHA + CHICHARON + PLATANOS" },
+      { label: "EXTRA", value: "LA CREMA PARA SACAR TUS LAGRIMAS" },
+      { label: "SABOR", value: "HECHO POR LA INFIDELIDAD" }
     ]
   },
   {
     id: "tocto-infiel",
     nombre: "TOCTO INFIEL",
-    tag: "EDICIÓN LIMITADA",
+    tag: "RESERVA ANTICIPADA\nEDICIÓN LIMITADA",
     precio: "S/20.00",
     img: "/images/004 Tocto.png",
-    descripcion: "El más crocante de todos. *Solo con reservación anticipada.*",
+    descripcion: "El más crocante de todos.\nPara los que siempre piden más: crujiente, con su cremita bien puesta y en tamaño\n*Solo con reservación anticipada.*",
     stats: [
       { label: "ESPECIALIDAD", value: "TOCTO CROCANTE" },
-      { label: "GUARNICIÓN", value: "PAPAS NATIVAS" },
-      { label: "EXTRA", value: "SARZA CRIOLLA" },
+      { label: "GUARNICIÓN", value: "EL AMOR UNICO AL CHICHARON CRUNCH" },
+      { label: "EXTRA", value: "CREMA + ROLLITOS DE PLATANO" },
       { label: "DISPONIBILIDAD", value: "PREVIA RESERVA" }
     ]
   },
   {
     id: "snack-personal-especial",
     nombre: "SNACK\nPERSONAL ESPECIAL",
-    tag: "BOWL PERSONAL PLUS",
+    tag: "BOWL PERSONAL ESPECIAL",
     precio: "S/22.00",
     img: "/images/005 clasico.png",
-    descripcion: "Sabor potenciado al máximo con nuestra receta especial.",
+    descripcion: "Para los que dijeron 'ya no voy a caer' y cayeron en la primera mordida.mirate estas otraves aqui\nTranqui, si te lo comes parado no engorda. Y si no te ven, tampoco cuenta. ",
     stats: [
       { label: "PROTEÍNA", value: "CHICHARRÓN ESPECIAL" },
-      { label: "GUARNICIÓN", value: "MIX DE PAPAS Y CAMOTE" },
-      { label: "EXTRA", value: "SALSAS ARTESANALES" },
-      { label: "SABOR", value: "PREMIUM" }
+      { label: "GUARNICIÓN", value: "MIX CANCHA + CHIFLES" },
+      { label: "EXTRA", value: "HALLS + CREMA PARA LLORAR" },
+      { label: "SABOR", value: "Más tóxico que responder 'nada, tú dirás'" }
     ]
   },
   {
